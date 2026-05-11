@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-red-500">
+  <h1>
     Hola mundo desde HomeView
   </h1>
 </template>
