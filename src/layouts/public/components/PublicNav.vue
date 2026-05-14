@@ -1,7 +1,11 @@
 <script setup>
 
   import { ref } from 'vue';
-import PublicNavLink from './PublicNavLink.vue';
+  import PublicNavLink from './PublicNavLink.vue';
+  import { RouterLink } from 'vue-router'; 
+  import AppLogo from '@/modules/shared/components/AppLogo.vue';
+  import DropdownMenu from '@/modules/shared/components/DropdownMenu.vue';
+  import DropdownItem from '@/modules/shared/components/DropdownItem.vue';
   const openMenu = ref(false);
 
 </script>
@@ -9,15 +13,28 @@ import PublicNavLink from './PublicNavLink.vue';
 <template>
   <nav class="bg-neutral-primary sticky top-0 z-20 w-full border-b border-default">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
-        <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
-    </a>
-    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <button type="button" class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-          <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
-        </button>
+      <RouterLink to="/">
+          <AppLogo />
+      </RouterLink>
+      <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <DropdownMenu>  
+          <template #trigger>
+            <button type="button" class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+            </button>
+          </template>
+          <DropdownItem :to="{name: 'admin.dashboard'}">
+            Admin
+          </DropdownItem>
+          <DropdownItem :to="{name: 'login'}">
+            Iniciar sesión
+          </DropdownItem>
+          <DropdownItem :to="{name: 'register'}">
+            Registrarse
+          </DropdownItem>
+        </DropdownMenu>
+        
         <!-- Dropdown menu -->
         <div class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44" id="user-dropdown">
           <div class="px-4 py-3 text-sm border-b border-default">
