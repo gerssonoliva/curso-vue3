@@ -17,7 +17,7 @@
 </script>
 
 <template>
-  <button :type="props.type" class="w-full text-white" :class="buttonClasses">
+  <button :type="props.type" class="w-full text-white disabled:opacity-50" :class="buttonClasses">
     <slot></slot>
   </button>
 </template>
